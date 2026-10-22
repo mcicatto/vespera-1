@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VÉSPERA — A Última Página</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== GAME CANVAS ===== -->
+  <canvas id="scene"></canvas>
+
+  <!-- ===== HUD ===== -->
+  <div id="hud" class="hidden">
+    <div id="hud-area" class="hud-badge">—</div>
+    <div id="hud-stats">
+      <span class="stat mem" title="Quanto da história você descobriu">MEM <b id="stat-mem">0</b></span>
+      <span class="stat cou" title="Quantas situações perigosas você enfrentou">COR <b id="stat-cou">0</b></span>
+      <span class="stat dou" title="Quanto você questionou a realidade">DÚV <b id="stat-dou">0</b></span>
+    </div>
+    <div id="hud-hint">[E] interagir &nbsp; [I] inventário &nbsp; [M] som &nbsp; [ESC] menu</div>
+  </div>
+
+  <!-- ===== TOAST (small notices) ===== -->
+  <div id="toast"></div>
+
+  <!-- ===== DIALOGUE / NARRATION ===== -->
+  <div id="dialogue" class="overlay hidden">
+    <div class="dlg-box">
+      <div class="dlg-speaker" id="dlg-speaker"></div>
+      <div class="dlg-text" id="dlg-text"></div>
+      <div class="dlg-choices" id="dlg-choices"></div>
+    </div>
+  </div>
+
+  <!-- ===== INVENTORY ===== -->
+  <div id="inventory" class="overlay hidden">
+    <div class="inv-box">
+      <h2>Inventário</h2>
+      <div id="inv-grid" class="inv-grid"></div>
+      <div id="inv-desc" class="inv-desc">Selecione um objeto estranho para examiná-lo.</div>
+      <button class="btn" id="inv-close">Fechar (I)</button>
+    </div>
+  </div>
+
+  <!-- ===== PUZZLE ===== -->
+  <div id="puzzle" class="overlay hidden">
+    <div class="puzzle-box">
+      <h2 id="puzzle-title">Enigma</h2>
+      <p id="puzzle-desc"></p>
+      <div id="puzzle-body"></div>
+      <div id="puzzle-msg"></div>
+      <button class="btn" id="puzzle-close">Desistir</button>
+    </div>
+  </div>
+
+  <!-- ===== BATTLE ===== -->
+  <div id="battle" class="overlay hidden">
+    <div class="battle-box">
+      <div id="battle-foe">?</div>
+      <div id="battle-log"></div>
+      <div id="battle-actions"></div>
+    </div>
+  </div>
+
+  <!-- ===== CUTSCENE / BIG TEXT ===== -->
+  <div id="cutscene" class="overlay hidden">
+    <div id="cut-text"></div>
+    <div id="cut-next">▸ clique / espaço</div>
+  </div>
+
+  <!-- ===== ENDING ===== -->
+  <div id="ending" class="overlay hidden">
+    <div class="end-box">
+      <h1 id="end-title"></h1>
+      <p id="end-text"></p>
+      <div id="end-stats"></div>
+      <button class="btn" id="end-restart">Recomeçar o ciclo</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN MENU ===== -->
+  <div id="menu" class="overlay">
+    <div class="menu-box">
+      <h1 class="title">VÉSPERA</h1>
+      <p class="subtitle">a última página</p>
+      <p class="menu-quote" id="menu-quote"></p>
+      <div class="menu-buttons">
+        <button class="btn primary" id="btn-new">Novo Jogo</button>
+        <button class="btn" id="btn-continue">Continuar</button>
+        <button class="btn" id="btn-how">Como Jogar</button>
+        <button class="btn" id="btn-credits">Créditos</button>
+      </div>
+      <p class="menu-footer">um conto sobre coisas que esquecemos de lembrar</p>
+    </div>
+  </div>
+
+  <!-- ===== HOW TO PLAY ===== -->
+  <div id="howto" class="overlay hidden">
+    <div class="how-box">
+      <h2>Como Jogar</h2>
+      <p><b>Mover:</b> W A S D ou as setas ← ↑ → ↓</p>
+      <p><b>Interagir:</b> E ou Espaço (fale, examine, use portas)</p>
+      <p><b>Inventário:</b> I &nbsp;·&nbsp; <b>Som:</b> M &nbsp;·&nbsp; <b>Menu:</b> ESC</p>
+      <hr>
+      <p>Você acorda em <b>Véspera</b>, uma cidade que está sendo <i>apagada</i>. Seu nome é <b>???</b>.</p>
+      <p>Encontre os <b>5 fragmentos</b> da Última Página. Cada fragmento guarda uma palavra.</p>
+      <p>Colete <b>memórias</b> — mas desconfie: algumas são falsas, e algumas foram colocadas por outra pessoa.</p>
+      <p>Os <b>Apagadores</b> não machucam você. Eles apagam o mundo. E às vezes, você.</p>
+      <p>Nem toda porta quer ser aberta. Nem todo inimigo quer lutar.</p>
+      <button class="btn" id="how-close">Voltar</button>
+    </div>
+  </div>
+
+  <!-- ===== CREDITS ===== -->
+  <div id="credits" class="overlay hidden">
+    <div class="how-box">
+      <h2>Créditos</h2>
+      <p><b>VÉSPERA — A Última Página</b></p>
+      <p>Design, texto, código e música: gerados proceduralmente.</p>
+      <p>Feito com HTML5 Canvas e Web Audio API.</p>
+      <p class="dim">Qualquer semelhança com a sua cidade não é coincidência.</p>
+      <button class="btn" id="credits-close">Voltar</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
